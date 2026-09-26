@@ -24,7 +24,9 @@ st.write(
 # Load trained model
 # -----------------------------------------
 
-MODEL_PATH = "../model_building/best_model.pkl"
+import os
+
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "best_model.pkl")
 
 @st.cache_resource
 def load_model():

@@ -24,21 +24,22 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r deployment/requirements.txt
+          pip install -r requirements.txt
 
       - name: Check project files
         run: |
-          test -f deployment/Dockerfile
-          test -f deployment/app.py
-          test -f deployment/requirements.txt
-          test -f model_building/best_model.pkl
+          test -f Dockerfile
+          test -f app.py
+          test -f requirements.txt
+          test -f best_model.pkl
+          test -f tourism.csv
+          test -f train.csv
+          test -f test.csv
 
       - name: Validate Python application
         run: |
-          python -m py_compile deployment/app.py
+          python -m py_compile app.py
 
       - name: Build Docker image
         run: |
-          docker build \
-            -f deployment/Dockerfile \
-            -t wellness-tourism-app .
+          docker build -f Dockerfile -t wellness-tourism-app .
